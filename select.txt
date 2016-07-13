@@ -1,4 +1,4 @@
-# SQLbasics
+# SQLbasics_SELECT
 
 #Find the country that start with Y
 SELECT name FROM world
@@ -147,3 +147,12 @@ WHERE name LIKE 'A%' OR name LIKE 'B%';
         ELSE continent END
 FROM world
 ORDER BY name;
+
+#Show the countries in Europe with a per capita GDP greater than 'United Kingdom'.
+SELECT name FROM world
+  WHERE (gdp/population) >
+     (SELECT gdp/population FROM world
+      WHERE name='United Kingdom')
+  AND continent = 'Europe';
+  
+  
